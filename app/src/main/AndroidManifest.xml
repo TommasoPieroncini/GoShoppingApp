@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.pieroncini.tommaso.goshopping" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_INTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".Utilities.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/shopping_bag"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".Activities.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Activities.RegistrationActivity"
+            android:label="@string/title_activity_registration"
+            android:parentActivityName=".Activities.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.GroupsListActivity"
+            android:label="@string/title_activity_groups_list"
+            android:parentActivityName=".Activities.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.LoginActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.ItemsListActivity"
+            android:label="@string/title_activity_items_list"
+            android:parentActivityName=".Activities.GroupsListActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.GroupsListActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.CreateGroupActivity"
+            android:label="@string/title_activity_create_group"
+            android:parentActivityName=".Activities.GroupsListActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.GroupsListActivity" />
+        </activity>
+        <activity
+            android:name=".Activities.AddItemActivity"
+            android:label="@string/title_activity_add_item"
+            android:parentActivityName=".Activities.ItemsListActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activities.ItemsListActivity" />
+        </activity>
+    </application>
+
+</manifest>

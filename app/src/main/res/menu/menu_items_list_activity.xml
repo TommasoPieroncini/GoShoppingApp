@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".ItemsListActivity">
+
+    <item android:id="@+id/action_delete_all_entries"
+        android:title="Clear all entries"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_refresh"
+        android:title="Refresh"
+        android:orderInCategory="200"
+        app:showAsAction="never"
+        android:icon="@drawable/refresh"/>
+
+    <!--<item android:id="@+id/action_shopping_mode"
+        android:title="Shopping Mode"
+        android:orderInCategory="500"
+        app:showAsAction="never" />-->
+
+    <item android:id="@+id/action_set_group_picture"
+        android:title="Set group picture"
+        android:orderInCategory="400"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_delete_group"
+        android:title="Delete group"
+        android:orderInCategory="500"
+        app:showAsAction="never" />
+
+    <item android:id="@+id/action_add_item"
+        android:title="Add item"
+        android:icon="@drawable/plus_icon"
+        android:orderInCategory="100"
+        app:showAsAction="always" />
+
+</menu>

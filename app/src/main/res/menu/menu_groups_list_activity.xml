@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context=".ItemsListActivity">
+
+    <item android:id="@+id/action_log_out"
+        android:title="Log out"
+        android:orderInCategory="300"
+        app:showAsAction="never" />
+
+    <!--<item android:id="@+id/action_see_profile"
+        android:title="Profile"
+        android:orderInCategory="200"
+        app:showAsAction="never" />-->
+
+    <item android:id="@+id/action_groups_refresh"
+        android:title="Refresh"
+        android:orderInCategory="100"
+        app:showAsAction="never"
+        android:icon="@drawable/refresh" />
+
+
+</menu>
