@@ -98,10 +98,10 @@ public class LoginActivity extends AppCompatActivity {
             InputStreamReader isr = new InputStreamReader(fis);
             BufferedReader bufferedReader = new BufferedReader(isr);
             StringBuilder sb = new StringBuilder();
-            String line;
-            while ((line = bufferedReader.readLine()) != null) {
-                sb.append(line);
-                Log.e("log_tag 11", line);
+            String ln;
+            while ((ln = bufferedReader.readLine()) != null) {
+                sb.append(ln);
+                Log.e("log_tag 11", ln);
             }
             authentificationFromStorage = sb.toString().split(",");
         } catch(Exception e) {
