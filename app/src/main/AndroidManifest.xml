@@ -8,14 +8,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
-        android:name=".Utilities.MyApplication"
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/shopping_bag"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Activities.LoginActivity"
+            android:name=".ui.login.LoginActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
@@ -25,49 +25,49 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Activities.RegistrationActivity"
+            android:name=".ui.login.RegistrationActivity"
             android:label="@string/title_activity_registration"
-            android:parentActivityName=".Activities.LoginActivity"
+            android:parentActivityName=".ui.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.LoginActivity" />
+                android:value=".ui.login.LoginActivity" />
         </activity>
         <activity
-            android:name=".Activities.GroupsListActivity"
+            android:name=".ui.main.GroupsListActivity"
             android:label="@string/title_activity_groups_list"
-            android:parentActivityName=".Activities.LoginActivity"
+            android:parentActivityName=".ui.login.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.LoginActivity" />
+                android:value=".ui.login.LoginActivity" />
         </activity>
         <activity
-            android:name=".Activities.ItemsListActivity"
+            android:name=".ui.group.ItemsListActivity"
             android:label="@string/title_activity_items_list"
-            android:parentActivityName=".Activities.GroupsListActivity"
+            android:parentActivityName=".ui.main.GroupsListActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.GroupsListActivity" />
+                android:value=".ui.main.GroupsListActivity" />
         </activity>
         <activity
-            android:name=".Activities.CreateGroupActivity"
+            android:name=".ui.main.CreateGroupActivity"
             android:label="@string/title_activity_create_group"
-            android:parentActivityName=".Activities.GroupsListActivity"
+            android:parentActivityName=".ui.main.GroupsListActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.GroupsListActivity" />
+                android:value=".ui.main.GroupsListActivity" />
         </activity>
         <activity
-            android:name=".Activities.AddItemActivity"
+            android:name=".ui.group.AddItemActivity"
             android:label="@string/title_activity_add_item"
-            android:parentActivityName=".Activities.ItemsListActivity"
+            android:parentActivityName=".ui.group.ItemsListActivity"
             android:theme="@style/AppTheme.NoActionBar" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activities.ItemsListActivity" />
+                android:value=".ui.group.ItemsListActivity" />
         </activity>
     </application>
 
