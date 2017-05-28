@@ -21,8 +21,6 @@ import android.widget.Toast;
 
 import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
-import com.pieroncini.tommaso.goshopping.data.sendRegistrationData;
-
 import java.io.FileOutputStream;
 
 public class RegistrationActivity extends AppCompatActivity {

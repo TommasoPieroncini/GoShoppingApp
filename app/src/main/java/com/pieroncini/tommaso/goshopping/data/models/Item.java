@@ -1,10 +1,5 @@
 package com.pieroncini.tommaso.goshopping.data.models;
 
-import android.graphics.Bitmap;
-import android.util.Log;
-
-import com.pieroncini.tommaso.goshopping.data.getPicFromServer;
-
 /**
  * Created by Tommaso on 6/19/2016.
  * class that represents a shopping item

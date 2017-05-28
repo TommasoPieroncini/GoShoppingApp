@@ -14,44 +14,38 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
 import com.pieroncini.tommaso.goshopping.data.DataManager;
-import com.pieroncini.tommaso.goshopping.data.getLoginInfo;
 import com.pieroncini.tommaso.goshopping.di.components.ActivityComponent;
+import com.pieroncini.tommaso.goshopping.di.components.DaggerActivityComponent;
 import com.pieroncini.tommaso.goshopping.di.modules.ActivityModule;
 import com.pieroncini.tommaso.goshopping.ui.base.BaseActivity;
 import com.pieroncini.tommaso.goshopping.ui.main.GroupsListActivity;
-
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity extends BaseActivity implements ILoginView {
 
     @Inject
-    private DataManager mDataManager;
+    DataManager mDataManager;
 
     private ActivityComponent activityComponent;
 
     @BindView(R.id.editText5)
-    private EditText username;
+    EditText username;
 
     @BindView(R.id.editText6)
-    private EditText password;
+    EditText password;
 
     @BindView(R.id.imageView7)
-    private ImageView login;
+    ImageView login;
 
     @BindView(R.id.imageView6)
-    private ImageView register;
+    ImageView register;
 
     private String[] authenticationFromStorage;
 
@@ -88,7 +82,7 @@ public class LoginActivity extends BaseActivity {
         login.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                changeColor = true;
+                // changeColor = true;
                 login.setScaleX((float) .8);
                 login.setScaleY((float) .8);
                 return false;
@@ -98,7 +92,7 @@ public class LoginActivity extends BaseActivity {
         register.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-                changeColor = true;
+                // changeColor = true;
                 register.setScaleX((float) .8);
                 register.setScaleY((float) .8);
                 return false;
@@ -113,10 +107,10 @@ public class LoginActivity extends BaseActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (changeColor) {
+                /*if (changeColor) {
                     register.setScaleX((float) 1.04);
                     register.setScaleY((float) 1.04);
-                }
+                }*/
                 startActivity(intent2);
             }
         });

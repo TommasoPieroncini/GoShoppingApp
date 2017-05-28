@@ -24,7 +24,6 @@ import android.widget.Toast;
 import com.pieroncini.tommaso.goshopping.data.models.Group;
 import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
-import com.pieroncini.tommaso.goshopping.data.getDataGroups;
 import com.pieroncini.tommaso.goshopping.ui.group.ItemsListActivity;
 import com.pieroncini.tommaso.goshopping.ui.login.LoginActivity;
 

@@ -23,17 +23,14 @@ import android.widget.ListView;
 import com.pieroncini.tommaso.goshopping.data.models.Group;
 import com.pieroncini.tommaso.goshopping.data.models.Image;
 import com.pieroncini.tommaso.goshopping.data.models.Item;
-import com.pieroncini.tommaso.goshopping.data.deleteAllItems;
 import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
-import com.pieroncini.tommaso.goshopping.data.deleteGroup;
-import com.pieroncini.tommaso.goshopping.data.getDataItems;
-import com.pieroncini.tommaso.goshopping.data.uploadPic;
+import com.pieroncini.tommaso.goshopping.ui.base.BaseActivity;
 import com.pieroncini.tommaso.goshopping.ui.main.GroupsListActivity;
 
 import java.util.ArrayList;
 
-public class ItemsListActivity extends AppCompatActivity {
+public class ItemsListActivity extends BaseActivity implements IItemsListView {
 
     private static ListView listView;
     private static ArrayList<Item> items;

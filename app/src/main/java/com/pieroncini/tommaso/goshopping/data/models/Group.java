@@ -1,11 +1,5 @@
 package com.pieroncini.tommaso.goshopping.data.models;
 
-import android.graphics.Bitmap;
-import android.util.Log;
-
-import com.pieroncini.tommaso.goshopping.data.getPicFromServer;
-
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

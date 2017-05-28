@@ -6,6 +6,7 @@ import android.content.Context;
 import com.pieroncini.tommaso.goshopping.data.DataManager;
 import com.pieroncini.tommaso.goshopping.data.models.Group;
 import com.pieroncini.tommaso.goshopping.di.components.ApplicationComponent;
+import com.pieroncini.tommaso.goshopping.di.components.DaggerApplicationComponent;
 import com.pieroncini.tommaso.goshopping.di.modules.ApplicationModule;
 
 import javax.inject.Inject;

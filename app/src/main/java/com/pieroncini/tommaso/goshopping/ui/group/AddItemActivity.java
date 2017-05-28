@@ -22,10 +22,9 @@ import com.pieroncini.tommaso.goshopping.data.models.Group;
 import com.pieroncini.tommaso.goshopping.data.models.Image;
 import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
-import com.pieroncini.tommaso.goshopping.data.addItem;
-import com.pieroncini.tommaso.goshopping.data.uploadPic;
+import com.pieroncini.tommaso.goshopping.ui.base.BaseActivity;
 
-public class AddItemActivity extends AppCompatActivity {
+public class AddItemActivity extends BaseActivity {
 
     private EditText itemName;
     private EditText itemQuantity;
@@ -99,38 +98,6 @@ public class AddItemActivity extends AppCompatActivity {
 
     // On submission of the item, send quantity, name, picture and notes to the server
     public void submit() {
-        String name = itemName.getText().toString();
-        if (name.equals("")) {
-            Toast.makeText(this, "Specify a name for your item!", Toast.LENGTH_SHORT).show();
-            return;
-        }
-        String quantity = itemQuantity.getText().toString();
-        String notes = itemNotes.getText().toString();
-        String success = "";
-        String path = "no image";
-        if (photo != null) {
-            path =  groupName + "/ItemsPictures/"
-                    + currentGroup.getTrueName() + currentGroup.getCreator() + "-" + username + "-"
-                    + itemName.getText().toString().replaceAll(" ", "-") + ".jpg";
-            try {
-                Image image = new Image(photo, path);
-                new uploadPic().execute(image).get();
-            } catch (Exception e) {
-                Log.e("log_error", "failed to upload image to server");
-            }
-        }
-        try {
-            success = new addItem().execute(name, quantity, notes, groupName, username, path).get();
-        } catch (Exception e) {
-            Log.e("log_error", "failed to add new item");
-        }
-
-        Log.e("log", success);
-        if (success.equals("true")) {
-            imm.toggleSoftInput(0,0);
-            startActivity(toItemsList);
-        }
-
     }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

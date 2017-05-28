@@ -17,8 +17,6 @@ import android.widget.TextView;
 
 import com.pieroncini.tommaso.goshopping.data.models.Item;
 import com.pieroncini.tommaso.goshopping.R;
-import com.pieroncini.tommaso.goshopping.data.deleteItem;
-import com.pieroncini.tommaso.goshopping.data.setItemChecked;
 
 import java.util.ArrayList;
 

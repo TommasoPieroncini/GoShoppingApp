@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 
 import com.pieroncini.tommaso.goshopping.data.DataManager;
+import com.pieroncini.tommaso.goshopping.data.DbHelper;
+import com.pieroncini.tommaso.goshopping.data.SharedPrefsHelper;
 import com.pieroncini.tommaso.goshopping.di.ApplicationContext;
 import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.di.modules.ApplicationModule;
