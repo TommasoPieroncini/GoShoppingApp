@@ -1,4 +1,4 @@
-package com.pieroncini.tommaso.goshopping;
+/*package com.pieroncini.tommaso.goshopping;
 
 import org.junit.Test;
 
@@ -19,9 +19,6 @@ import static org.hamcrest.Matchers.*;
 import android.test.suitebuilder.annotation.LargeTest;
 import static com.checkdroid.crema.EspressoPlus.*;
 
-/**
- * To work on unit tests, switch the Test Artifact in the Build Variants view.
- */
 public class ExampleUnitTest {
     @Test
     public void addition_isCorrect() throws Exception {
@@ -36,4 +33,4 @@ public class ExampleUnitTest {
         onView(withId(R.id.editText12)).perform(click());
         onView(withId(R.id.editText12)).perform(clearText(), typeText("CGte"));
     }
-}
+}*/

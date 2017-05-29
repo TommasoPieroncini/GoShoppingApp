@@ -53,9 +53,9 @@ public class GroupsAdapter extends ArrayAdapter<Group> {
         }
 
         viewHolder.groupName.setText(group.getName());
-        viewHolder.groupCreator.setText("by " + group.getMembers()[0]);
-        viewHolder.groupMembers.setText("Members: " + group.getMembersString());
-        Bitmap imgBitMp = group.getGroupImage();
+        viewHolder.groupCreator.setText("by " + group.getAdmin().getUsername());
+        viewHolder.groupMembers.setText("Members: " + group.getMembers().toString());
+        Bitmap imgBitMp = group.getImage().getBitmap();
         if (imgBitMp != null) {
             viewHolder.groupImage.setImageBitmap(imgBitMp);
         }

@@ -25,4 +25,8 @@ public class Check {
     public User getCheckedBy() {
         return checkedBy;
     }
+
+    public boolean getValue() {
+        return checked;
+    }
 }

@@ -17,10 +17,11 @@ import android.widget.Toast;
 
 import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
+import com.pieroncini.tommaso.goshopping.ui.base.BaseActivity;
 
 import java.util.ArrayList;
 
-public class CreateGroupActivity extends AppCompatActivity {
+public class CreateGroupActivity extends BaseActivity {
 
     private EditText groupName;
     private EditText newMember;
@@ -93,7 +94,7 @@ public class CreateGroupActivity extends AppCompatActivity {
                     if (!membersAdded.contains(name)) {
                         if (name.length() > 2) {
                             try {
-                                memberExists = new checkIfMemberExists().execute(name).get();
+                                // memberExists = new checkIfMemberExists().execute(name).get();
                             } catch (Exception e) {
                                 Log.e("log_error", "failed to check if member exists");
                             }
@@ -136,7 +137,7 @@ public class CreateGroupActivity extends AppCompatActivity {
                 if (name.length() >= 2) {
                     membersAdded.add(name.replaceAll(" ", "_"));
                     try {
-                        groupCreated = new createGroup().execute(membersAdded).get();
+                        // groupCreated = new createGroup().execute(membersAdded).get();
                     } catch (Exception e) {
                         Log.e("log_error", "failed to create group"+ e.toString());
                     }

@@ -67,7 +67,7 @@ public class ItemsListAdapter extends ArrayAdapter<Item> {
         // ViewHolder behavior at all requests
 
         viewHolder.itemName.setText(item.getName());
-        viewHolder.itemCreator.setText("by " + item.getUsername());
+        viewHolder.itemCreator.setText("by " + item.getCreator().getUsername());
         viewHolder.itemQuantity.setText("Quantity: " + item.getQuantity());
         viewHolder.itemDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,23 +75,18 @@ public class ItemsListAdapter extends ArrayAdapter<Item> {
                 safetyPopUp(position, item);
             }
         });
-        viewHolder.itemCheck.setChecked(Boolean.valueOf(item.getCheck()));
+        viewHolder.itemCheck.setChecked(item.getCheck().getValue());
         viewHolder.itemCheck.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Log.e("TEST", "check " + item.getCheck() + " " +
-                            Boolean.toString(!Boolean.valueOf(item.getCheck())));
-                    new setItemChecked().execute(Integer.toString(position + 1),
-                            Boolean.toString(!Boolean.valueOf(item.getCheck())),
-                            item.getGroup().getName() + item.getGroup().getCreator()).get();
-                    item.setCheck(Boolean.toString(!Boolean.getBoolean(item.getCheck())));
+                    // item.setCheck(!item.getCheck().getValue(), );
                 } catch (Exception e) {
                     Log.e("Log_Tag", "failed to execute itemChecked");
                 }
             }
         });
-        Bitmap imgBitMp = item.getImage();
+        Bitmap imgBitMp = item.getImage().getBitmap();
         if (imgBitMp != null) {
             viewHolder.itemImage.setImageBitmap(imgBitMp);
         } else {
@@ -117,11 +112,7 @@ public class ItemsListAdapter extends ArrayAdapter<Item> {
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface d, int id) {
                                 try {
-                                    new deleteItem().execute(Integer.toString(position),
-                                            item.getGroup().getName()
-                                                    + item.getGroup().getCreator())
-                                            .get();
-                                    ItemsListActivity.refresh();
+                                    // ItemsListActivity.refresh();
                                 } catch (Exception e) {
                                     Log.e("Failed to delete item", "Error: " + e);
                                 }
@@ -146,7 +137,7 @@ public class ItemsListAdapter extends ArrayAdapter<Item> {
         }
         ImageView photo = (ImageView) dialog.findViewById((R.id.imageView4));
         if (item.getImage() != null) {
-            photo.setImageBitmap(item.getImage());
+            photo.setImageBitmap(item.getImage().getBitmap());
         }
         dialog.show();
     }

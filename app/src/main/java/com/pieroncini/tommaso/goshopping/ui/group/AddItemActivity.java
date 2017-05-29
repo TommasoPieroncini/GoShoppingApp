@@ -24,16 +24,28 @@ import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
 import com.pieroncini.tommaso.goshopping.ui.base.BaseActivity;
 
+import butterknife.BindView;
+
+// TODO: remove and substitute with fragment/dialog - also add save item functionality
 public class AddItemActivity extends BaseActivity {
 
-    private EditText itemName;
-    private EditText itemQuantity;
-    private EditText itemNotes;
+    @BindView(R.id.editText9)
+    EditText itemName;
+
+    @BindView(R.id.editText11)
+    EditText itemQuantity;
+
+    @BindView(R.id.editText12)
+    EditText itemNotes;
+
     private Group currentGroup;
     private String groupName;
     private String username;
     private Intent toItemsList;
-    private TextView pictureTaken;
+
+    @BindView(R.id.textView8)
+    TextView pictureTaken;
+
     private Bitmap photo;
     private InputMethodManager imm;
 
@@ -49,13 +61,9 @@ public class AddItemActivity extends BaseActivity {
         username = ((MyApplication) getApplicationContext()).getUsername();
         currentGroup = ((MyApplication) getApplicationContext()).getCurrentGroup();
         setTitle("New Item for " + currentGroup.getName());
-        groupName = currentGroup.getTrueName() + currentGroup.getCreator();
+        groupName = currentGroup.getName() + currentGroup.getAdmin();
         Button newItemSubmit = (Button) findViewById(R.id.button9);
         ImageView takePicture = (ImageView) findViewById(R.id.button10);
-        itemName = (EditText) findViewById(R.id.editText9);
-        itemQuantity = (EditText) findViewById(R.id.editText11);
-        itemNotes = (EditText) findViewById(R.id.editText12);
-        pictureTaken = (TextView) findViewById(R.id.textView8);
         toItemsList = new Intent(getApplicationContext(), ItemsListActivity.class);
 
         // setting up soft input keyboard to pop up

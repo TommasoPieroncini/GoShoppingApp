@@ -30,11 +30,15 @@ import com.pieroncini.tommaso.goshopping.ui.main.GroupsListActivity;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 public class ItemsListActivity extends BaseActivity implements IItemsListView {
 
-    private static ListView listView;
-    private static ArrayList<Item> items;
-    private static Context context = null;
+    @BindView(R.id.listView)
+    ListView listView;
+
+    private ArrayList<Item> items;
+    private Context context = null;
     private static Group currentGroup;
     private static String trueGroupName;
 
@@ -47,7 +51,7 @@ public class ItemsListActivity extends BaseActivity implements IItemsListView {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         currentGroup = ((MyApplication) getApplicationContext()).getCurrentGroup();
-        trueGroupName = currentGroup.getTrueName();
+        trueGroupName = currentGroup.getName();
         setTitle(currentGroup.getName());
         listView = (ListView) findViewById(R.id.listView);
         context = this;
@@ -127,13 +131,8 @@ public class ItemsListActivity extends BaseActivity implements IItemsListView {
                 if (data != null) {
                     Bitmap groupPic = (Bitmap) data.getExtras().get("data");
                     Log.e("log", "You took a picture");
-                    String name = "groupPic-" + (currentGroup.getTrueName() + currentGroup.getCreator()) + ".jpg";
+                    String name = "groupPic-" + (currentGroup.getName() + currentGroup.getAdmin().getCreatedAt()) + ".jpg";
                     Image image = new Image(groupPic, name);
-                    try {
-                        new uploadPic().execute(image).get();
-                    } catch (Exception e) {
-                        Log.e("log_error", "Failed to upload group picture to server");
-                    }
                 }
             }
 
@@ -152,13 +151,8 @@ public class ItemsListActivity extends BaseActivity implements IItemsListView {
                 BitmapFactory.Options options = new BitmapFactory.Options();
                 options.inSampleSize = 8;
                 Bitmap groupPic = fixRotation(BitmapFactory.decodeFile(filePath, options), filePath);
-                String name = "groupPic-" + (currentGroup.getTrueName() + currentGroup.getCreator()) + ".jpg";
+                String name = "groupPic-" + (currentGroup.getName() + currentGroup.getCreatedAt()) + ".jpg";
                 Image image = new Image(groupPic, name);
-                try {
-                    new uploadPic().execute(image).get();
-                } catch (Exception e) {
-                    Log.e("log_error", "Failed to upload group picture to server");
-                }
             }
         }
     }
@@ -206,8 +200,7 @@ public class ItemsListActivity extends BaseActivity implements IItemsListView {
                             public void onClick(DialogInterface d, int id) {
                                 if (flag.equals("group_delete")) {
                                     try {
-                                        new deleteGroup().execute(trueGroupName
-                                                + currentGroup.getCreator()).get();
+
                                         d.dismiss();
                                         Intent leave = new Intent (getApplicationContext(),
                                                 GroupsListActivity.class);
@@ -217,8 +210,7 @@ public class ItemsListActivity extends BaseActivity implements IItemsListView {
                                     }
                                 } else if (flag.equals("all_entries_delete")) {
                                     try {
-                                        new deleteAllItems().execute(trueGroupName
-                                                + currentGroup.getCreator()).get();
+
                                     } catch (Exception e){
                                         Log.e("log_tag","failed to execute delete all items");
                                     }
@@ -238,15 +230,11 @@ public class ItemsListActivity extends BaseActivity implements IItemsListView {
     }
 
     // Refreshes the list of items
-    public static void refresh(){
-        try{
-            items = new getDataItems().execute(trueGroupName + currentGroup.getCreator()).get();
+    public void refresh(){
+        try {
 
         }catch(Exception e){
             Log.e("log_tag", "failed to execute getData");
-        }
-        for (Item i : items) {
-            i.setUpItem(currentGroup);
         }
         ArrayAdapter<Item> adapter = new ItemsListAdapter(context, items);
         listView.setAdapter(adapter);

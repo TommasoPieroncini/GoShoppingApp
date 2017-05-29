@@ -21,9 +21,12 @@ import android.widget.Toast;
 
 import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
+import com.pieroncini.tommaso.goshopping.ui.base.BaseActivity;
+
 import java.io.FileOutputStream;
 
-public class RegistrationActivity extends AppCompatActivity {
+// TODO: remove and substitute with change in ui of login activity
+public class RegistrationActivity extends BaseActivity {
 
     private EditText email;
     private EditText username;
@@ -89,8 +92,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 if (inputPassword.equals(inputPassword2)) {
                     if (inputEmail.contains("@")) {
                         try {
-                            serverResponse = new sendRegistrationData().execute(inputEmail,
-                                    inputUsername,inputPassword).get().toString();
+
                         } catch (Exception e) {
                             Log.e("log_tag3", "FAILED TO GET RESPONSE FROM sendData");
                         }

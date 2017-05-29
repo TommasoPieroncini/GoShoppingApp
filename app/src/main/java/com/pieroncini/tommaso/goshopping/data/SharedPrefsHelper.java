@@ -10,7 +10,7 @@ import javax.inject.Singleton;
  */
 
 @Singleton
-public class SharedPrefsHelper {
+public class SharedPrefsHelper implements ISharedDataPrefs {
 
     public static String PREF_KEY_ACCESS_TOKEN = "access-token";
 

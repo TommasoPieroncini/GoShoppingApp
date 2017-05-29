@@ -24,13 +24,14 @@ import android.widget.Toast;
 import com.pieroncini.tommaso.goshopping.data.models.Group;
 import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
+import com.pieroncini.tommaso.goshopping.ui.base.BaseActivity;
 import com.pieroncini.tommaso.goshopping.ui.group.ItemsListActivity;
 import com.pieroncini.tommaso.goshopping.ui.login.LoginActivity;
 
 import java.io.File;
 import java.util.ArrayList;
 
-public class GroupsListActivity extends AppCompatActivity {
+public class GroupsListActivity extends BaseActivity {
 
     private final Context context = this;
     private Intent toCreateGroup;
@@ -175,13 +176,13 @@ public class GroupsListActivity extends AppCompatActivity {
     // Refreshed the list of groups
     private void refresh() {
         try {
-            allGroups = new getDataGroups().execute(username).get();
+
         } catch (Exception e) {
             Log.e("log_error", "failed to retrieve groups data");
         }
-        for (Group g : allGroups) {
+/*        for (Group g : allGroups) {
             g.setGroupImage();
-        }
+        }*/
         GroupsAdapter adapter = new GroupsAdapter(this, allGroups);
         groupsList.setAdapter(adapter);
     }
