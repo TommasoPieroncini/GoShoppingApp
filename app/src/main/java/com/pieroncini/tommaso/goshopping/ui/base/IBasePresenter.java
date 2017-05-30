@@ -5,4 +5,10 @@ package com.pieroncini.tommaso.goshopping.ui.base;
  */
 
 public interface IBasePresenter<V extends IBaseView> {
+
+    void onAttach(V mvpView);
+
+    void onDetach();
+
+    void setUserAsLoggedOut();
 }

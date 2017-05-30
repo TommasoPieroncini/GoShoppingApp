@@ -27,13 +27,15 @@ import com.pieroncini.tommaso.goshopping.ui.main.GroupsListActivity;
 import javax.inject.Inject;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class LoginActivity extends BaseActivity implements ILoginView {
 
     @Inject
     DataManager mDataManager;
 
-    private ActivityComponent activityComponent;
+    @Inject
+    ILoginPresenter<ILoginView> mPresenter;
 
     @BindView(R.id.editText5)
     EditText username;
@@ -55,15 +57,9 @@ public class LoginActivity extends BaseActivity implements ILoginView {
     private Intent intent1;
     private Intent intent2;
 
-
-    public ActivityComponent getActivityComponent() {
-        if (activityComponent == null) {
-            activityComponent = DaggerActivityComponent.builder()
-                    .activityModule(new ActivityModule(this))
-                    .applicationComponent(MyApplication.get(this).getComponent())
-                    .build();
-        }
-        return activityComponent;
+    public static Intent getStartIntent(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        return intent;
     }
 
     @Override
@@ -72,6 +68,10 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         setContentView(R.layout.activity_login);
 
         getActivityComponent().inject(this);
+
+        setUnBinder(ButterKnife.bind(this));
+
+        mPresenter.onAttach(LoginActivity.this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         setTitle("GoShopping!");
@@ -154,5 +154,23 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void openMainActivity() {
+        Intent intent = GroupsListActivity.getStartIntent(LoginActivity.this);
+        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        mPresenter.onDetach();
+        super.onDestroy();
+    }
+
+    @Override
+    protected void setUp() {
+
     }
 }

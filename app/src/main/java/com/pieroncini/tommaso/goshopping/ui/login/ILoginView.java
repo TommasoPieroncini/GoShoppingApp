@@ -7,4 +7,6 @@ import com.pieroncini.tommaso.goshopping.ui.base.IBaseView;
  */
 
 public interface ILoginView extends IBaseView {
+
+    void openMainActivity();
 }

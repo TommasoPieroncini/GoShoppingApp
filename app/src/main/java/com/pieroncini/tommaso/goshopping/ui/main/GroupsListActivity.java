@@ -31,15 +31,24 @@ import com.pieroncini.tommaso.goshopping.ui.login.LoginActivity;
 import java.io.File;
 import java.util.ArrayList;
 
+import butterknife.BindView;
+
 public class GroupsListActivity extends BaseActivity {
 
     private final Context context = this;
     private Intent toCreateGroup;
     private Bundle logOutBooleanBundle;
     private Intent logOutIntent;
-    private ListView groupsList;
+
+    @BindView(R.id.listView2)
+    ListView groupsList;
     private ArrayList<Group> allGroups;
     private String username;
+
+    public static Intent getStartIntent(Context context) {
+        Intent intent = new Intent(context, LoginActivity.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +63,6 @@ public class GroupsListActivity extends BaseActivity {
         ImageView newGroup = (ImageView) findViewById(R.id.imageView2);
         logOutBooleanBundle = new Bundle();
         logOutIntent = new Intent(this, LoginActivity.class);
-        groupsList = (ListView) findViewById(R.id.listView2);
         allGroups = new ArrayList<>();
         refresh();
 
@@ -79,6 +87,11 @@ public class GroupsListActivity extends BaseActivity {
                 startActivity(toProductsList);
             }
         });
+    }
+
+    @Override
+    protected void setUp() {
+
     }
 
     @Override
