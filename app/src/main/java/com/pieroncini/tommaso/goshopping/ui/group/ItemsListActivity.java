@@ -59,6 +59,11 @@ public class ItemsListActivity extends BaseActivity implements IItemsListView {
     }
 
     @Override
+    protected void setUp() {
+
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_items_list_activity, menu);

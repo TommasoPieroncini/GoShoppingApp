@@ -15,12 +15,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.pieroncini.tommaso.goshopping.MyApplication;
 import com.pieroncini.tommaso.goshopping.R;
 import com.pieroncini.tommaso.goshopping.data.DataManager;
-import com.pieroncini.tommaso.goshopping.di.components.ActivityComponent;
-import com.pieroncini.tommaso.goshopping.di.components.DaggerActivityComponent;
-import com.pieroncini.tommaso.goshopping.di.modules.ActivityModule;
 import com.pieroncini.tommaso.goshopping.ui.base.BaseActivity;
 import com.pieroncini.tommaso.goshopping.ui.main.GroupsListActivity;
 
@@ -32,22 +28,19 @@ import butterknife.ButterKnife;
 public class LoginActivity extends BaseActivity implements ILoginView {
 
     @Inject
-    DataManager mDataManager;
-
-    @Inject
     ILoginPresenter<ILoginView> mPresenter;
 
-    @BindView(R.id.editText5)
+    @BindView(R.id.login_email)
     EditText username;
 
-    @BindView(R.id.editText6)
+    @BindView(R.id.login_password)
     EditText password;
-
-    @BindView(R.id.imageView7)
-    ImageView login;
-
-    @BindView(R.id.imageView6)
-    ImageView register;
+//
+//    @BindView(R.id.imageView7)
+//    ImageView login;
+//
+//    @BindView(R.id.imageView6)
+//    ImageView register;
 
     private String[] authenticationFromStorage;
 
@@ -72,64 +65,9 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         setUnBinder(ButterKnife.bind(this));
 
         mPresenter.onAttach(LoginActivity.this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        setTitle("GoShopping!");
-
-        intent1 = new Intent(this, GroupsListActivity.class);
-        intent2 = new Intent(this, RegistrationActivity.class);
-
-        login.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // changeColor = true;
-                login.setScaleX((float) .8);
-                login.setScaleY((float) .8);
-                return false;
-            }
-        });
-
-        register.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // changeColor = true;
-                register.setScaleX((float) .8);
-                register.setScaleY((float) .8);
-                return false;
-            }
-        });
-
-        //IF AUTHENTICATION DATA IS IN INTERNAL STORAGE LOGIN ACTIVITY IS SKIPPED
-
-
-        // If the authentication data can't be found in the server, the app rests at LoginActivity
-
-        register.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                /*if (changeColor) {
-                    register.setScaleX((float) 1.04);
-                    register.setScaleY((float) 1.04);
-                }*/
-                startActivity(intent2);
-            }
-        });
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                login();
-            }
-        });
-
-        password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    login();
-                }
-                return true;
-            }
-        });
     }
 
     // On login pressed username and password are sent through to the server

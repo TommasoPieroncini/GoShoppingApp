@@ -162,6 +162,11 @@ public class CreateGroupActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void setUp() {
+
+    }
+
     // Tutorial dialog
     private void showInfoPopUp() {
         final AlertDialog.Builder builder =  new AlertDialog.Builder(this);

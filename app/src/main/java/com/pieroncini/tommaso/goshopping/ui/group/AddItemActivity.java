@@ -104,6 +104,11 @@ public class AddItemActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void setUp() {
+
+    }
+
     // On submission of the item, send quantity, name, picture and notes to the server
     public void submit() {
     }

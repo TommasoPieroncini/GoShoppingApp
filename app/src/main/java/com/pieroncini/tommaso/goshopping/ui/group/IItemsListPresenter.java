@@ -6,5 +6,5 @@ import com.pieroncini.tommaso.goshopping.ui.base.IBasePresenter;
  * Created by Tommaso on 5/28/2017.
  */
 
-public interface IItemsListPresenter<V> extends IBasePresenter {
+public interface IItemsListPresenter<V extends IItemsListView> extends IBasePresenter<V> {
 }

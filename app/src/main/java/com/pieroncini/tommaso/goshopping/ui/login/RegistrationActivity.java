@@ -133,6 +133,11 @@ public class RegistrationActivity extends BaseActivity {
         });
     }
 
+    @Override
+    protected void setUp() {
+
+    }
+
     // Initial tutorial dialog
     private void showInfoPopUp() {
         final AlertDialog.Builder builder =  new AlertDialog.Builder(this);

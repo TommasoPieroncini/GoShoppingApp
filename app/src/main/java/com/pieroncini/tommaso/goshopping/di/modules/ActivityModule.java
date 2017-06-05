@@ -1,12 +1,20 @@
 package com.pieroncini.tommaso.goshopping.di.modules;
 
-import android.app.Activity;
 import android.content.Context;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
 
 import com.pieroncini.tommaso.goshopping.di.ActivityContext;
+import com.pieroncini.tommaso.goshopping.di.PerActivity;
+import com.pieroncini.tommaso.goshopping.ui.login.ILoginPresenter;
+import com.pieroncini.tommaso.goshopping.ui.login.ILoginView;
+import com.pieroncini.tommaso.goshopping.ui.login.LoginPresenter;
+import com.pieroncini.tommaso.goshopping.utils.rx.ISchedulerProvider;
+import com.pieroncini.tommaso.goshopping.utils.rx.SchedulerProvider;
 
 import dagger.Module;
 import dagger.Provides;
+import io.reactivex.disposables.CompositeDisposable;
 
 /**
  * Created by Tommaso on 5/28/2017.
@@ -15,10 +23,10 @@ import dagger.Provides;
 @Module
 public class ActivityModule {
 
-    private Activity mActivity;
+    private AppCompatActivity mActivity;
 
-    public ActivityModule(Activity activity) {
-        mActivity = activity;
+    public ActivityModule(AppCompatActivity activity) {
+        this.mActivity = activity;
     }
 
     @Provides
@@ -28,7 +36,30 @@ public class ActivityModule {
     }
 
     @Provides
-    Activity provideActivity() {
+    AppCompatActivity provideActivity() {
         return mActivity;
+    }
+
+    @Provides
+    CompositeDisposable provideCompositeDisposable() {
+        return new CompositeDisposable();
+    }
+
+    @Provides
+    SchedulerProvider provideSchedulerProvider() {
+        return new SchedulerProvider();
+    }
+
+    @Provides
+    @PerActivity
+    ILoginPresenter<ILoginView> provideLoginPresenter(
+            LoginPresenter<ILoginView> presenter) {
+        return presenter;
+    }
+
+
+    @Provides
+    LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {
+        return new LinearLayoutManager(activity);
     }
 }
