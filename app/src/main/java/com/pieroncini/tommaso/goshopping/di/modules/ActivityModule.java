@@ -9,6 +9,9 @@ import com.pieroncini.tommaso.goshopping.di.PerActivity;
 import com.pieroncini.tommaso.goshopping.ui.login.ILoginPresenter;
 import com.pieroncini.tommaso.goshopping.ui.login.ILoginView;
 import com.pieroncini.tommaso.goshopping.ui.login.LoginPresenter;
+import com.pieroncini.tommaso.goshopping.ui.splash.ISplashPresenter;
+import com.pieroncini.tommaso.goshopping.ui.splash.ISplashView;
+import com.pieroncini.tommaso.goshopping.ui.splash.SplashPresenter;
 import com.pieroncini.tommaso.goshopping.utils.rx.ISchedulerProvider;
 import com.pieroncini.tommaso.goshopping.utils.rx.SchedulerProvider;
 
@@ -57,6 +60,12 @@ public class ActivityModule {
         return presenter;
     }
 
+    @Provides
+    @PerActivity
+    ISplashPresenter<ISplashView> provideSplashPresenter(
+            SplashPresenter<ISplashView> presenter) {
+        return presenter;
+    }
 
     @Provides
     LinearLayoutManager provideLinearLayoutManager(AppCompatActivity activity) {

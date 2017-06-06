@@ -4,6 +4,7 @@ import com.pieroncini.tommaso.goshopping.di.PerActivity;
 import com.pieroncini.tommaso.goshopping.di.modules.ActivityModule;
 import com.pieroncini.tommaso.goshopping.ui.group.ItemsListActivity;
 import com.pieroncini.tommaso.goshopping.ui.login.LoginActivity;
+import com.pieroncini.tommaso.goshopping.ui.splash.SplashActivity;
 
 import dagger.Component;
 
@@ -15,10 +16,9 @@ import dagger.Component;
 @Component(dependencies = ApplicationComponent.class, modules = ActivityModule.class)
 public interface ActivityComponent {
 
-    // void inject(MainActivity mainActivity);
+    void inject(SplashActivity splashActivity);
 
     void inject(LoginActivity loginActivity);
 
     void inject(ItemsListActivity itemsListActivity);
-
 }
